@@ -19,10 +19,5 @@ class TopMenuBarActions(BasePage):
     def click_on_hotel_option(self):
         self.click(*TopMenuBarLocators.hotel_tab)
 
-    def check_data_section_is_present(self):
-        return self.is_displayed(*TopMenuBarLocators.data_section)
-
-    def check_save_button_is_present(self):
-        return self.is_displayed(*TopMenuBarLocators.save_button)
 
 
