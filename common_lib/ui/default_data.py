@@ -6,3 +6,4 @@ DEFAULT_VALUES = {'Name': 'Automation Test Name',
                   'Short Description': 'Automation Test Short Description'}
 
 EMPTY_DROPDOWN_FIELD = 'Select one'
+

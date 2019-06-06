@@ -72,5 +72,5 @@ class BasePage:
     def get_field_input_value(self, *locator):
         return self.driver.find_element(*locator).get_attribute('value')
 
-    def get_dropdown_field_selected_value(self, *locator):
+    def get_value_from_grid_or_dropdown(self, *locator):
         return self.driver.find_element(*locator).text

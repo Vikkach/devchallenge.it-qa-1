@@ -17,6 +17,7 @@ class RegisterHotelLocators:
     # Global Rating
     rating_star = (By.XPATH, "(//div[@id='add_hotel:rate']/div[@class='ui-rating-star'])[{}]")
     rating_field = (By.XPATH, "//div[@id='add_hotel:rate']/..")
+    rating_value_hotel_list = (By.XPATH, "//div[@class='ui-datatable-tablewrapper']//td[@role='gridcell'][contains(.,'{}')]//..//td[3]")
 
     # Date of Construction
     date_of_construction_input_field = (By.XPATH, input_field_parent.format("dateOfConstruction_input"))
@@ -55,3 +56,7 @@ class RegisterHotelLocators:
     #Notes
     notes_field = (By.XPATH, "//textarea[@id='add_hotel:notes']/..")
     notes_input_field = (By.XPATH, text_area_input_field_parent.format("notes"))
+
+    hotel_value = (By.XPATH, "//div[@class='ui-datatable-tablewrapper']//td[@role='gridcell'][contains(.,'{}')]")
+
+    go_to_end_button = (By.XPATH, "//span[@class='ui-icon ui-icon-seek-end']")

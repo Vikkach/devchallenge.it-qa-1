@@ -36,8 +36,11 @@ class TestRegisterHotelFieldsEditing(TestBaseRegisterHotel):
             assert self.register_hotel_page.type_text_to_field(alphanumeric_str, alphanumeric_field) == alphanumeric_str, \
                 f'{alphanumeric_field} should allows to input alphanumeric characters'
 
-    def test_user_can_save_hotel_with_valid_data(self, go_to_register_hotel_page):
+    def test_user_can_save_hotel_with_all_valid_data(self, go_to_register_hotel_page, generate_random_correct_hotel_values):
         with step('Fill all mandatory fields by correct values'):
-            self.register_hotel_page.fill_all_mandatory_fields_by_default_data()
+            self.register_hotel_page.fill_registration_hotel_form_by_data(random_values=generate_random_correct_hotel_values)
         with step('Click on save button'):
             self.register_hotel_page.click_on_save_button()
+        with step('Check hotel was saved in hotels list'):
+            self.register_hotel_page.check_hotel_was_created(generate_random_correct_hotel_values)
+
