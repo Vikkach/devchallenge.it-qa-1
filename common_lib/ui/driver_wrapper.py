@@ -12,7 +12,7 @@ class Driver:
         try:
             browser = os.environ['BROWSER']
         except KeyError:
-            os.environ['BROWSER'] = 'chrome'
+            os.environ['BROWSER'] = 'firefox'
             browser = os.environ['BROWSER']
         driver = None
         if browser == 'chrome':
