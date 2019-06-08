@@ -15,4 +15,7 @@ RESULTS_FOLDER=report
 rm -rf $RESULTS_FOLDER/*
 
 # Execute tests with Allure report
-python -m pytest tests/api/ --alluredir $RESULTS_FOLDER
+python -m pytest test/ui/ --alluredir $RESULTS_FOLDER
+
+#Open allure report
+allure serve $RESULTS_FOLDER

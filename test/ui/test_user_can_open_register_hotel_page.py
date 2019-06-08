@@ -1,9 +1,10 @@
-from allure import step
+from allure import step, title
 
 from test.ui import TestBaseRegisterHotel
 
 
 class TestUserCanOpenRegisterHotelPage(TestBaseRegisterHotel):
+    @title('Test user can go to register hotel page from welcome screen')
     def test_user_can_open_register_hotel_page(self):
         with step('User open welcome page'):
             self.top_menu_bar.go_to_welcome_page()

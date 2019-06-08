@@ -1,5 +1,5 @@
 import pytest
-from allure import step
+from allure import step, title
 
 from common_lib.ui.data_generator import DataGenerators
 from common_lib.ui.default_data import EMPTY_DROPDOWN_FIELD
@@ -10,12 +10,14 @@ from test.ui import TestBaseRegisterHotel
 
 class TestRegisterHotelMandatoryFields(TestBaseRegisterHotel):
     @pytest.mark.parametrize('asterisk_field', mandatory_fields)
+    @title('Test mandatory fields are marked with asterisk')
     def test_field_marked_with_asterisk(self, asterisk_field, go_to_register_hotel_page):
         with step(f'Check {asterisk_field} field is marked as asterisk'):
             assert self.register_hotel_page.check_field_marked_as_asterisk(asterisk_field), \
                 f'{asterisk_field} field should be marked with asterisk'
 
     @pytest.mark.parametrize('mandatory_field', mandatory_fields)
+    @title('Test user cannot save hotel with empty mandatory field')
     def test_empty_mandatory_field(self, mandatory_field, go_to_register_hotel_page):
         with step('Fill all mandatory fields by correct values'):
             self.register_hotel_page.fill_registration_hotel_form_by_data()
@@ -29,6 +31,7 @@ class TestRegisterHotelMandatoryFields(TestBaseRegisterHotel):
             assert self.register_hotel_page.check_error_message_is_present(mandatory_field), \
                 f'{mandatory_field} error message should be present'
 
+    @title('Test user can save hotel only with mandatory values')
     def test_save_hotel_only_with_mandatory_fields(self, go_to_register_hotel_page,
                                                    generate_random_correct_mandatory_hotel_values):
         with step('Fill all mandatory fields by correct values'):
@@ -40,6 +43,7 @@ class TestRegisterHotelMandatoryFields(TestBaseRegisterHotel):
             self.register_hotel_page.check_hotel_was_created(generate_random_correct_mandatory_hotel_values)
 
     @pytest.mark.parametrize('date_format_field', editable_date_fields)
+    @title('Test user cannot save hotel with incorrect mandatory field')
     def test_save_incorrect_date_format_value(self, go_to_register_hotel_page, date_format_field,
                                               generate_random_correct_mandatory_hotel_values):
         with step('Fill all mandatory fields by correct values'):

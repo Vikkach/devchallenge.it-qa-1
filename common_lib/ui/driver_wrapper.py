@@ -21,7 +21,7 @@ class Driver:
                 opt.set_headless()
                 opt.add_argument("--log-level=3")
                 opt.add_argument("--enable-features=NetworkService")
-            driver = webdriver.Chrome(ChromeDriverManager().install(), options=opt)
+            driver = webdriver.Chrome(options=opt)
         elif browser == 'firefox':
             driver = webdriver.Firefox(executable_path=GeckoDriverManager().install())
         return Driver.add_driver_settings(driver)
